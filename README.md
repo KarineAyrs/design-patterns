@@ -2,3 +2,9 @@
 ## Patterns covered in course: 
 - Factory 
 - Abstract Factory
+- Repository 
+- Singleton
+- Builder & Fluent Interface
+- Adapter
+- Decorator
+- Worker Pool
