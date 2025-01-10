@@ -1,6 +1,31 @@
 package models
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
+
+var repo Repository
+
+type Models struct {
+	DogBreed DogBreed
+}
+
+func New(conn *sql.DB) *Models {
+	if conn != nil {
+		repo = newMysqlRepository(conn)
+	} else {
+		repo = newTestRepository(nil)
+	}
+
+	return &Models{
+		DogBreed: DogBreed{},
+	}
+}
+
+func (d *DogBreed) All() ([]*DogBreed, error) {
+	return repo.AllDogBreeds()
+}
 
 type DogBreed struct {
 	ID               int    `json:"id"`
